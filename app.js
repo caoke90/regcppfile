@@ -1,4 +1,5 @@
 var fs = require('fs');
+var path=require("path")
 var str,arr;
 
 var files=fs.readdirSync("./")
@@ -7,7 +8,7 @@ files.forEach(function(filename){
     if(filename.indexOf(".bat")==(filename.length-4)||filename.indexOf(".js")==(filename.length-3)){
         return;
     }
-    arr=require('./reg.js')
+
     fs.readFile(filename,function(err,data){
         if(err){return;}
         str=data.toString();
@@ -18,6 +19,7 @@ files.forEach(function(filename){
 
 var tihuan=function(filename){
 
+    var arr=require('./reg.js')()
     for(var i=0;i<arr.length;i++){
         var p1,p2;
         p1=arr[i][0];
